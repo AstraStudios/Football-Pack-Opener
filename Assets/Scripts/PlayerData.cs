@@ -20,7 +20,8 @@ public class PlayerData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        allPlayers.AddRange(bteamplayers);
+        allPlayers.AddRange(ateamplayers);
     }
 
     // Update is called once per frame
@@ -28,11 +29,9 @@ public class PlayerData : MonoBehaviour
     {
 
     }
-
-    public void Players()
-    {
-        List<Player> bteamplayers = new List<Player>
-        {
+       public List<Player> allPlayers = new List<Player>();
+       public List<Player> bteamplayers = new List<Player>
+       {
             new Player { Name = "Luke Brittain", Position = "LB", Overall = 69, Rarity = "B Team" },
             new Player { Name = "Clive Stokes", Position = "WR", Overall = 84, Rarity = "B Team" },
             new Player { Name = "Henry Hanna", Position = "OT", Overall = 83, Rarity = "B Team" },
@@ -58,9 +57,9 @@ public class PlayerData : MonoBehaviour
             new Player { Name = "Diego Rios", Position = "WR", Overall = 71, Rarity = "B Team" },
             new Player { Name = "Sean Machado", Position = "WR", Overall = 73, Rarity = "B Team" },
             new Player { Name = "Will Pigford", Position = "WR", Overall = 76, Rarity = "B Team" },
-        };
-        List<Player> ateamplayers = new List<Player>
-        {
+       };
+       public List<Player> ateamplayers = new List<Player>
+       {
             new Player { Name = "Charles Dyess", Position = "WR", Overall = 83, Rarity = "A Team" },
             new Player { Name = "Cristian Villegas", Position = "DT", Overall = 86, Rarity = "A Team" },
             new Player { Name = "Jackson Cross", Position = "WR", Overall = 81, Rarity = "A Team" },
@@ -82,15 +81,5 @@ public class PlayerData : MonoBehaviour
             new Player { Name = "Van Kotzur", Position = "CB", Overall = 88, Rarity = "A Team" },
             new Player { Name = "Alessandro Lovings", Position = "C", Overall = 90, Rarity = "A Team" },
             new Player { Name = "Haynes Morrison", Position = "OG", Overall = 86, Rarity = "A Team" },
-        };
-    }
-
-    class Player
-    {
-        public string Name { get; set; }
-        public string Position { get; set; }
-        public int Overall { get; set; }
-        public string Rarity { get; set; }
-        public int Worth { get; set; }
-    }
+       };
 }
