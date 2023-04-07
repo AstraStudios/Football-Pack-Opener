@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Threading;
 
 public class PackType : MonoBehaviour
 {
@@ -19,52 +20,61 @@ public class PackType : MonoBehaviour
         
     }
 
-    public List<Player> CreatePack(int numCommon, int numRare, int numEpic)
+    public List<Player> CreatePack(int numBaseB, int numBaseA, int numPromo)
     {
         List<Player> pack = new List<Player>();
-        List<Player> commonPlayers = new List<Player>();
-        List<Player> rarePlayers = new List<Player>();
-        List<Player> epicPlayers = new List<Player>();
+        List<Player> bteamPlayers = new List<Player>();
+        List<Player> ateamPlayers = new List<Player>();
+        List<Player> promoPlayers = new List<Player>();
 
-        // Separate the players by rarity
-        foreach (Player player in allPlayers)
+        //Separate the players by rarity
+        foreach (Player player in Player.allPlayers)
         {
-            if (player.Rarity == player.Rarity)
+            if (player.Rarity == "B Team")
             {
-                commonPlayers.Add(player);
+                bteamPlayers.Add(player);
             }
-            else if (player.Rarity == Rarity.Rare)
+            else if (player.Rarity == "A Team")
             {
-                rarePlayers.Add(player);
+                ateamPlayers.Add(player);
             }
-            else if (player.Rarity == Rarity.Epic)
+            else if (player.Rarity != "B Team" || player.Rarity != "A Team")
             {
-                epicPlayers.Add(player);
+                promoPlayers.Add(player);
             }
         }
 
         // Randomly select players based on the pack requirements
-        for (int i = 0; i < numCommon; i++)
+        for (int i = 0; i < numBaseB; i++)
         {
-            int randIndex = Random.Range(0, commonPlayers.Count);
-            pack.Add(commonPlayers[randIndex]);
-            commonPlayers.RemoveAt(randIndex);
+            int randIndex = Random.Range(0, bteamPlayers.Count);
+            pack.Add(bteamPlayers[randIndex]);
+            bteamPlayers.RemoveAt(randIndex);
         }
 
-        for (int i = 0; i < numRare; i++)
+        for (int i = 0; i < numBaseB; i++)
         {
-            int randIndex = Random.Range(0, rarePlayers.Count);
-            pack.Add(rarePlayers[randIndex]);
-            rarePlayers.RemoveAt(randIndex);
+            int randIndex = Random.Range(0, ateamPlayers.Count);
+            pack.Add(ateamPlayers[randIndex]);
+            ateamPlayers.RemoveAt(randIndex);
         }
 
-        for (int i = 0; i < numEpic; i++)
+        for (int i = 0; i < numPromo; i++)
         {
-            int randIndex = Random.Range(0, epicPlayers.Count);
-            pack.Add(epicPlayers[randIndex]);
-            epicPlayers.RemoveAt(randIndex);
+            int randIndex = Random.Range(0, promoPlayers.Count);
+            pack.Add(promoPlayers[randIndex]);
+            promoPlayers.RemoveAt(randIndex);
         }
 
         return pack;
+    }
+
+    public void BTeamPlayersPack()
+    {
+        List<Player> currentPack = CreatePack(20, 0, 0);
+        for (int i = 0; i > currentPack.Count; i++)
+        {
+
+        }
     }
 }

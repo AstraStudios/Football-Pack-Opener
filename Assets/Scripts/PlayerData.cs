@@ -56,7 +56,7 @@ public class PlayerData : MonoBehaviour
             new Player { Name = "Dylan Richards", Position = "QB", Overall = 78, Rarity = "B Team" },
             new Player { Name = "Diego Rios", Position = "WR", Overall = 71, Rarity = "B Team" },
             new Player { Name = "Sean Machado", Position = "WR", Overall = 73, Rarity = "B Team" },
-            new Player { Name = "Will Pigford", Position = "WR", Overall = 76, Rarity = "B Team" },
+            new Player { Name = "Will Pigford", Position = "WR", Overall = 63, Rarity = "B Team" },
        };
        public List<Player> ateamplayers = new List<Player>
        {
