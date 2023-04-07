@@ -7,6 +7,7 @@ using System.Threading;
 public class PackType : MonoBehaviour
 {
     [SerializeField] PlayerData Player;
+    [SerializeField] TMP_Text revealText;
     // make functions of different pack types, then fulfill them
     // Start is called before the first frame update
     void Start()
@@ -52,7 +53,7 @@ public class PackType : MonoBehaviour
             bteamPlayers.RemoveAt(randIndex);
         }
 
-        for (int i = 0; i < numBaseB; i++)
+        for (int i = 0; i < numBaseA; i++)
         {
             int randIndex = Random.Range(0, ateamPlayers.Count);
             pack.Add(ateamPlayers[randIndex]);
@@ -69,12 +70,12 @@ public class PackType : MonoBehaviour
         return pack;
     }
 
-    public void BTeamPlayersPack()
+    public void OnePlayerPack()
     {
-        List<Player> currentPack = CreatePack(20, 0, 0);
+        List<Player> currentPack = CreatePack(0, 1, 0);
         for (int i = 0; i > currentPack.Count; i++)
         {
-
+            revealText.text = currentPack[i].ToString();
         }
     }
 }
